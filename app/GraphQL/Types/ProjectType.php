@@ -19,15 +19,15 @@ class ProjectType extends GraphQLType
         return [
             'id' => [
                 'type' => Type::nonNull(Type::int()),
-                'description' => 'The project Id'
+                'description' => 'The Project Id'
             ],
             'title' => [
                 'type' => Type::nonNull(Type::string()),
-                'description' => 'The project Title'
+                'description' => 'The Project Title'
             ],
             'description' => [
                 'type' => Type::nonNull(Type::string()),
-                'description' => 'The project Description'
+                'description' => 'The Project Description'
             ],
             /*'manager' => [
                 'type' => Type::nonNull(Type::int()),
