@@ -15,6 +15,15 @@ class ProjectsQuery extends Query
         'description' => 'Retrieves projects'
     ];
 
+    public function args(): array
+    {
+        return [
+            'projectId' => [
+                'type' => Type::int()
+            ]
+        ];
+    }
+
     public function type(): Type
     {
         return Type::listOf(GraphQL::type('project'));
@@ -22,6 +31,9 @@ class ProjectsQuery extends Query
 
     public function resolve($root, $args)
     {
+        if (isset($args['projectId'])) {
+            return Project::where('id', $args['projectId'])->get();
+        }
         return Project::all();
     }
 }
