@@ -1913,7 +1913,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios__WEBPACK_IMPORTED_MODULE_0___default().post('/graphql', {
-      query: '{projects{id, title, description}}'
+      query: this.$apiQueries.dashboard
     }).then(function (res) {
       _this.projects = res.data.data.projects;
     });
@@ -1957,7 +1957,10 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios__WEBPACK_IMPORTED_MODULE_1___default().post('/graphql', {
-      query: "{\n                projects(projectId: ".concat(this.$route.params.id, ")\n                {\n                    id,\n                    title,\n                    description\n                }\n            }")
+      query: this.$apiQueries.singleProject,
+      variables: {
+        projectId: parseInt(this.$route.params.id)
+      }
     }).then(function (res) {
       _this.project = res.data.data.projects[0];
     });
